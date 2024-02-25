@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class SpawnPointsController : MonoBehaviour
+public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private float _delay;
     [SerializeField] private bool _isOrderRandom;
@@ -11,6 +11,24 @@ public class SpawnPointsController : MonoBehaviour
     private void Start()
     {
         StartCoroutine(SpawnAllEnemies(_delay));
+    }
+
+    public void SpawnEnemy(EnemySpawnPoint spawnPoint)
+    {
+        Enemy newEnemy = Instantiate(spawnPoint.Enemy, spawnPoint.transform.position, Quaternion.identity);
+
+        if (newEnemy.TryGetComponent<CharacterMover>(out CharacterMover mover))
+        {
+            if (spawnPoint.InitialTarget != null)
+            {
+                mover.SetTarget(spawnPoint.InitialTarget);
+            }
+
+            if (spawnPoint.PatrolPoints != null)
+            {
+                mover.SetPatrolPoints(spawnPoint.PatrolPoints);
+            }
+        }
     }
 
     private IEnumerator SpawnAllEnemies(float delay)
@@ -25,9 +43,7 @@ public class SpawnPointsController : MonoBehaviour
                 spawnPointIndex = Random.Range(0, _spawnPoints.Length);
             }
 
-            EnemySpawnPoint spawnPoint = _spawnPoints[spawnPointIndex];
-
-            spawnPoint.SpawnEnemy();
+            SpawnEnemy(_spawnPoints[spawnPointIndex]);
 
             enemyCounter++;
             spawnPointIndex++;

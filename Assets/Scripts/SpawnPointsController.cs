@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class SpawnPointsController : MonoBehaviour
 {
     [SerializeField] private float _delay;
     [SerializeField] private bool _isOrderRandom;

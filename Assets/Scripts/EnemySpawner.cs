@@ -13,7 +13,7 @@ public class EnemySpawner : MonoBehaviour
         StartCoroutine(SpawnAllEnemies(_delay));
     }
 
-    public void SpawnEnemy(EnemySpawnPoint spawnPoint)
+    private void SpawnEnemy(EnemySpawnPoint spawnPoint)
     {
         Enemy newEnemy = Instantiate(spawnPoint.Enemy, spawnPoint.transform.position, Quaternion.identity);
 
@@ -36,6 +36,8 @@ public class EnemySpawner : MonoBehaviour
         int enemyCounter = 0;
         int spawnPointIndex = 0;
 
+        WaitForSeconds pauseTime = new WaitForSeconds(delay);
+
         while (enemyCounter < _quantityOfEnemies)
         {
             if (_isOrderRandom)
@@ -53,7 +55,7 @@ public class EnemySpawner : MonoBehaviour
                 spawnPointIndex = 0;
             }
 
-            yield return new WaitForSeconds(delay);
+            yield return pauseTime;
         }
     }
 }

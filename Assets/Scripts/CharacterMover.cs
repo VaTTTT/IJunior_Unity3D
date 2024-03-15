@@ -1,21 +1,30 @@
+using System;
+using System.ComponentModel;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-[RequireComponent(typeof(Animator))]
 
+[RequireComponent(typeof(Animator))]
 public class CharacterMover : MonoBehaviour
 {
     [SerializeField] private float _speed;
+    [SerializeField] private float _attackDistance;
+    [SerializeField] private float _itemPickUpDistance;
     [SerializeField] private Target[] _patrolPoints;
-    [SerializeField] private Target _currentTarget;
-    [SerializeField] private float _stopDistance;
     
-    private Animator _animator;
     private int _currentPatrolPointIndex;
     private int _patrolPointsNumber;
+    private Target _currentTarget;
+    private Animator _animator;
     private Vector3 _targetPosition;
+    private TargetAttacker _targetAttacker;
+
+    public float AttackDistance => _attackDistance;
+    public Target Target => _currentTarget;
 
     private void Start()
     {
         _animator = GetComponent<Animator>();
+        _targetAttacker = GetComponent<TargetAttacker>();
         _patrolPointsNumber = _patrolPoints.Length;
         _currentPatrolPointIndex = 0;
     }
@@ -24,44 +33,45 @@ public class CharacterMover : MonoBehaviour
     {
         if (_currentTarget != null)
         {
-            _animator.SetFloat("Speed_f", _speed);
+            _targetPosition = _currentTarget.transform.position;
 
-            _targetPosition = _currentTarget.gameObject.transform.position;
-
-            if (Vector3.Distance(transform.position, _targetPosition) > _stopDistance)
+            if (_currentTarget.TryGetComponent<Character>(out _) && Vector3.Distance(transform.position, _targetPosition) > _attackDistance)
             {
+                _animator.SetBool("IsMoving_b", true);
+                _targetAttacker.enabled = false;
                 transform.LookAt(_targetPosition);
                 transform.Translate(Vector3.forward * _speed * Time.deltaTime);
             }
-            else if(_patrolPointsNumber > 0)
+            else if (!_currentTarget.TryGetComponent<Character>(out _))
             {
-                _currentTarget = GetNextTarget();
+                if (Vector3.Distance(transform.position, _targetPosition) > _itemPickUpDistance)
+                {
+                    _animator.SetBool("IsMoving_b", true);
+                    _targetAttacker.enabled = false;
+                    transform.LookAt(_targetPosition);
+                    transform.Translate(Vector3.forward * _speed * Time.deltaTime);
+                }
+                else if (_patrolPointsNumber > 0)
+                {
+                    _currentPatrolPointIndex = ++_currentPatrolPointIndex % _patrolPointsNumber;
+                    _currentTarget = _patrolPoints[_currentPatrolPointIndex];
+                }
             }
-
+            else
+            {
+                _animator.SetBool("IsMoving_b", false);
+                _targetAttacker.enabled = true;
+            }
         }
         else if (_patrolPointsNumber > 0)
         {
             _currentTarget = _patrolPoints[_currentPatrolPointIndex];
         }
-    }
-
-    private Target GetNextTarget()
-    {
-        if (_patrolPointsNumber > 0)
+        else
         {
-            if (_currentPatrolPointIndex < _patrolPointsNumber - 1)
-            {
-                _currentPatrolPointIndex++;
-            }
-            else
-            {
-                _currentPatrolPointIndex = 0;
-            }
-            
-            return _patrolPoints[_currentPatrolPointIndex];
+            _animator.SetBool("IsMoving_b", false);
+            _targetAttacker.enabled = false; 
         }
-
-       return null;
     }
 
     public void SetPatrolPoints(Target[] points)
@@ -72,5 +82,12 @@ public class CharacterMover : MonoBehaviour
     public void SetTarget(Target target) 
     { 
         _currentTarget = target;
+    }
+
+    public Character GetReachedCharacter() 
+    {
+        _currentTarget.TryGetComponent<Character>(out Character character);
+
+        return character;
     }
 }

@@ -15,19 +15,9 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemy(EnemySpawnPoint spawnPoint)
     {
-        Enemy newEnemy = Instantiate(spawnPoint.Enemy, spawnPoint.transform.position, Quaternion.identity);
-
-        if (newEnemy.TryGetComponent<CharacterMover>(out CharacterMover mover))
+        if (spawnPoint.Enemy)
         {
-            if (spawnPoint.InitialTarget != null)
-            {
-                mover.SetTarget(spawnPoint.InitialTarget);
-            }
-
-            if (spawnPoint.PatrolPoints != null)
-            {
-                mover.SetPatrolPoints(spawnPoint.PatrolPoints);
-            }
+            Enemy enemy = Instantiate(spawnPoint.Enemy, spawnPoint.transform.position, Quaternion.identity);
         }
     }
 

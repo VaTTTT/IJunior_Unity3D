@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class StateMachine : MonoBehaviour
@@ -14,7 +11,6 @@ public class StateMachine : MonoBehaviour
     private void Start()
     {
         ResetStates(_firstState);
-        Debug.Log("ResetStates State:" + _firstState);
     }
 
     private void Update()
@@ -38,7 +34,6 @@ public class StateMachine : MonoBehaviour
 
         if (_currentState != null) 
         {
-            Debug.Log("Entering State:" + _currentState);
             _currentState.Enter();
         }
     }

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,12 +10,10 @@ public abstract class State : MonoBehaviour
         if (enabled == false)
         {
             enabled = true;
-            Debug.Log("State is enabled");
 
             foreach (var transition in _transitions)
             {
                 transition.enabled = true;
-                Debug.Log("Transitions are enabled");
             }
         }
     }

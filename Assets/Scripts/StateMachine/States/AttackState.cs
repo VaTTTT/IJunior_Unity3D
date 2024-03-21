@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackState : State
@@ -43,7 +41,11 @@ public class AttackState : State
 
         if (_attackTimeCounter >= _animationLength)
         {
-            _character.Target.ApplyDamage(_damage);
+            if (_character.Target.TryGetComponent<Character>(out Character target))
+            {
+                target.ApplyDamage(_damage);
+            }
+
             _attackTimeCounter = 0;
         }
     }

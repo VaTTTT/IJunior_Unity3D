@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PatrolState : State
@@ -7,10 +5,12 @@ public class PatrolState : State
     [SerializeField] private float _speed;
     [SerializeField] private float _stopDistance;
     
-    [SerializeField] private PatrolPoint[] _patrolPoints;
+    private PatrolPoint[] _patrolPoints;
     private int _currentPatrolPointIndex;
     private int _patrolPointsNumber;
     private Animator _animator;
+
+    public int PatrolPointsNumber => _patrolPointsNumber;
 
     private void Awake()
     {
@@ -29,7 +29,6 @@ public class PatrolState : State
 
     private void Start()
     {
-        _patrolPointsNumber = _patrolPoints.Length;
         _currentPatrolPointIndex = 0;
     }
 
@@ -56,5 +55,6 @@ public class PatrolState : State
     public void SetPatrolPoints(PatrolPoint[] points)
     {
         _patrolPoints = points;
+        _patrolPointsNumber = _patrolPoints.Length;
     }
 }

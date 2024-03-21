@@ -18,6 +18,11 @@ public class EnemySpawner : MonoBehaviour
         if (spawnPoint.Enemy)
         {
             Enemy enemy = Instantiate(spawnPoint.Enemy, spawnPoint.transform.position, Quaternion.identity);
+
+            if (enemy.TryGetComponent<PatrolState>(out PatrolState state))
+            {
+                state.SetPatrolPoints(spawnPoint.PatrolPoints);
+            }
         }
     }
 

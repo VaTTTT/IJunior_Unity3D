@@ -20,6 +20,8 @@ public class AttackState : State
     {
         _animator.SetBool("IsAttacking_b", true);
         _animator.speed = _attackSpeed;
+        _animationLength = 1.167f / _attackSpeed;
+        _attackTimeCounter = _animationLength / 2;
     }
 
     private void OnDisable()
@@ -31,13 +33,12 @@ public class AttackState : State
     private void Start()
     {
         _defaultAnimatorSpeed = 1;
-        _animationLength = 1.167f / _attackSpeed;
         _character = GetComponent<Character>();
     }
 
     private void Update()
     {
-        _attackTimeCounter += Time.deltaTime * _attackSpeed;
+        _attackTimeCounter += Time.deltaTime;
 
         if (_attackTimeCounter >= _animationLength)
         {

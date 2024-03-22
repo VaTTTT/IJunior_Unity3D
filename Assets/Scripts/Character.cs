@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Character : Target
 {
-    [SerializeField] private int _initialHealth;
+    [SerializeField] private int _maximalHealth;
     [SerializeField] private float _attackDistance;
     [SerializeField] private float _itemPickupDistance;
     [SerializeField] private float _enemyDetectDistance;
@@ -16,7 +16,7 @@ public abstract class Character : Target
     public int EnemyLayerMask { get; protected set; }
     public int MedicineLayerMask { get; protected set; }
 
-    public int InitialHealth => _initialHealth;
+    public int MaximalHealth => _maximalHealth;
     public int CurrentHealth => _currentHealth;
     public float AttackDistance => _attackDistance;
     public float StopDistance => _itemPickupDistance;
@@ -27,31 +27,22 @@ public abstract class Character : Target
 
     private void Start()
     {
-        _currentHealth = _initialHealth;
+        _currentHealth = _maximalHealth;
     }
 
     public void ApplyDamage(int damage)
     {
-        if (_currentHealth - damage > 0)
-        {
-            _currentHealth -= damage;
-        }
-        else
-        {
+        _currentHealth = Mathf.Clamp(_currentHealth - damage, 0, _maximalHealth);
+
+        if (_currentHealth == 0) 
+        { 
             Destroy(gameObject);
         }
     }
 
     public void ApplyHealing(int amount)
     {
-        if (_currentHealth + amount <= _initialHealth)
-        {
-            _currentHealth += amount;
-        }
-        else
-        {
-            _currentHealth = _initialHealth;
-        }
+        _currentHealth = Mathf.Clamp(_currentHealth + amount, 0, _maximalHealth);
     }
 
     public void SetTarget(Target target)

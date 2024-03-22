@@ -6,7 +6,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float _delay;
     [SerializeField] private bool _isOrderRandom;
     [SerializeField] private int _quantityOfEnemies;
-    [SerializeField] EnemySpawnPoint[] _spawnPoints;
+    [SerializeField] private EnemySpawnPoint[] _spawnPoints;
 
     private void Start()
     {

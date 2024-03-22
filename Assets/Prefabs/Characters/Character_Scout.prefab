@@ -287,7 +287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 875158774a647d449a4fe3c7a4c9b7c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initialHealth: 100
+  _maximalHealth: 100
   _attackDistance: 2.5
   _itemPickupDistance: 0.1
   _enemyDetectDistance: 5

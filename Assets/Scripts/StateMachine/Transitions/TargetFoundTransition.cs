@@ -21,7 +21,7 @@ public class TargetFoundTransition : Transition
         {
             _isTargetFound = true;
         }
-        else if (_character.CurrentHealth < _character.InitialHealth)
+        else if (_character.CurrentHealth < _character.MaximalHealth)
         {
             _closestTarget = GetClosestTarget(_character.MedicineLayerMask, _character.ItemDetectDistance);
 

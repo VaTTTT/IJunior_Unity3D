@@ -42,9 +42,9 @@ public class AttackState : State
 
         if (_attackTimeCounter >= _animationLength)
         {
-            if (_character.Target.TryGetComponent<Character>(out Character target))
+            if (_character.Target.TryGetComponent<Health>(out Health targetHealth))
             {
-                target.ApplyDamage(_damage);
+                targetHealth.ApplyDamage(_damage);
             }
 
             _attackTimeCounter = 0;

@@ -182,6 +182,7 @@ GameObject:
   - component: {fileID: -6113509263390569186}
   - component: {fileID: 3174091424471670320}
   - component: {fileID: 6610118777353473088}
+  - component: {fileID: 1446503554470277684}
   m_Layer: 6
   m_Name: Character_Scout
   m_TagString: Untagged
@@ -287,7 +288,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 875158774a647d449a4fe3c7a4c9b7c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maximalHealth: 100
   _attackDistance: 2.5
   _itemPickupDistance: 0.1
   _enemyDetectDistance: 5
@@ -435,6 +435,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetState: {fileID: 3174091424471670320}
+--- !u!114 &1446503554470277684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2989547246333541862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa3542e9eaaea5f4794cefba193e39c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maximalHealth: 100
 --- !u!1 &3206107281261307336
 GameObject:
   m_ObjectHideFlags: 0

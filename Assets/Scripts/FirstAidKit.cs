@@ -6,9 +6,9 @@ public class FirstAidKit : Item
 
      private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.TryGetComponent(out Player player))
+        if (collision.gameObject.TryGetComponent(out Health health))
         {
-            player.ApplyHealing(_healAmount);
+            health.ApplyHealing(_healAmount);
             Destroy(gameObject);
         }
     }

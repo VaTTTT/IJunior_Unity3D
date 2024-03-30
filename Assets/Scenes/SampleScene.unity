@@ -165,6 +165,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1278729094}
     - target: {fileID: 5204552977302553722, guid: 28a8c2919b3fabf4e9ccd1489b9217b1, type: 3}
+      propertyPath: _mainCamera
+      value: 
+      objectReference: {fileID: 963194227}
+    - target: {fileID: 5204552977302553722, guid: 28a8c2919b3fabf4e9ccd1489b9217b1, type: 3}
       propertyPath: _healthValue
       value: 
       objectReference: {fileID: 855555829}

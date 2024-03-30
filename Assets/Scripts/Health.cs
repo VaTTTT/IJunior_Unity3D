@@ -1,26 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
     [SerializeField] private int _maximalHealth;
     
-    private int _currentHealth;
+    private int _currentHealthValue;
+    private int _previousHealthValue;
 
-    public int MaximalHealth => _maximalHealth;
-    public int CurrentHealth => _currentHealth;
+    public event UnityAction<int,int> HealthChanged;
 
-    void Start()
+    public int MaximalHealthValue => _maximalHealth;
+    public int CurrentHealthValue => _currentHealthValue;
+
+    private void Start()
     {
-        _currentHealth = _maximalHealth;
+        _currentHealthValue = _maximalHealth;
+        _previousHealthValue = _currentHealthValue;
     }
 
     public void ApplyDamage(int damage)
     {
-        _currentHealth = Mathf.Clamp(_currentHealth - damage, 0, _maximalHealth);
+        _previousHealthValue = _currentHealthValue;
+        _currentHealthValue = Mathf.Clamp(_currentHealthValue - damage, 0, _maximalHealth);
 
-        if (_currentHealth == 0)
+        HealthChanged?.Invoke(_previousHealthValue, _currentHealthValue);
+
+        if (_currentHealthValue == 0)
         {
             Destroy(gameObject);
         }
@@ -28,6 +36,8 @@ public class Health : MonoBehaviour
 
     public void ApplyHealing(int amount)
     {
-        _currentHealth = Mathf.Clamp(_currentHealth + amount, 0, _maximalHealth);
+        _currentHealthValue = Mathf.Clamp(_currentHealthValue + amount, 0, _maximalHealth);
+
+        HealthChanged?.Invoke(_previousHealthValue, _currentHealthValue);
     }
 }

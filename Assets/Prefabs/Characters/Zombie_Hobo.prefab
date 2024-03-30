@@ -694,6 +694,7 @@ GameObject:
   - component: {fileID: 3314076067745766786}
   - component: {fileID: 9190961134110675828}
   - component: {fileID: -1167077545253415278}
+  - component: {fileID: 7952946835130191061}
   - component: {fileID: 4994482113690885934}
   - component: {fileID: 4788128645385302983}
   - component: {fileID: -3650387333398321557}
@@ -706,7 +707,6 @@ GameObject:
   - component: {fileID: 4499871194055838985}
   - component: {fileID: 3602048310136736218}
   - component: {fileID: 3351333053904045964}
-  - component: {fileID: 7952946835130191061}
   m_Layer: 7
   m_Name: Zombie_Hobo
   m_TagString: Untagged
@@ -768,6 +768,19 @@ MonoBehaviour:
   _itemPickupDistance: 0.1
   _enemyDetectDistance: 15
   _itemDetectDistance: 0
+--- !u!114 &7952946835130191061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8353789362984565861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa3542e9eaaea5f4794cefba193e39c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maximalHealth: 40
 --- !u!114 &4994482113690885934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -959,19 +972,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 3, z: 1}
   m_Center: {x: 0, y: 1.5, z: 0}
---- !u!114 &7952946835130191061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8353789362984565861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa3542e9eaaea5f4794cefba193e39c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maximalHealth: 40
 --- !u!1 &8951962265202411541
 GameObject:
   m_ObjectHideFlags: 0

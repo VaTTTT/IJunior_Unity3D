@@ -1,43 +1,48 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private int _maximalHealth;
+    [SerializeField] private int _maximalValue;
     
-    private int _currentHealthValue;
-    private int _previousHealthValue;
+    private int _currentValue;
 
-    public event UnityAction<int,int> HealthChanged;
+    public event UnityAction<int> Changed;
+    public event UnityAction Died;
 
-    public int MaximalHealthValue => _maximalHealth;
-    public int CurrentHealthValue => _currentHealthValue;
+    public int MaximalValue => _maximalValue;
+    public int CurrentValue => _currentValue;
 
     private void Start()
     {
-        _currentHealthValue = _maximalHealth;
-        _previousHealthValue = _currentHealthValue;
+        _currentValue = _maximalValue;
     }
 
     public void ApplyDamage(int damage)
     {
-        _previousHealthValue = _currentHealthValue;
-        _currentHealthValue = Mathf.Clamp(_currentHealthValue - damage, 0, _maximalHealth);
-
-        HealthChanged?.Invoke(_previousHealthValue, _currentHealthValue);
-
-        if (_currentHealthValue == 0)
+        if (damage > 0)
         {
-            Destroy(gameObject);
+            ChangeHealthValue(-damage);
+
+            if (_currentValue <= 0)
+            { 
+                Died?.Invoke();
+            }
         }
     }
 
     public void ApplyHealing(int amount)
     {
-        _currentHealthValue = Mathf.Clamp(_currentHealthValue + amount, 0, _maximalHealth);
+        if (amount > 0)
+        {
+            ChangeHealthValue(amount);
+        }
+    }
 
-        HealthChanged?.Invoke(_previousHealthValue, _currentHealthValue);
+    private void ChangeHealthValue(int value)
+    {
+        _currentValue = Mathf.Clamp(_currentValue + value, 0, _maximalValue);
+
+        Changed?.Invoke(_currentValue);
     }
 }

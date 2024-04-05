@@ -16,9 +16,9 @@ public class SmoothHealthBar : HealthBar
         _sliderCurrentValue = _healthSlider.maxValue;
     }
 
-    protected override void OnHealthChanged(int currentValue)
+    protected override void OnHealthChanged(float currentValue)
     { 
-        _sliderTargetValue = currentValue.ConvertTo<float>() / Health.MaximalValue;
+        _sliderTargetValue = currentValue / Health.MaximalValue;
 
         StopCoroutine(nameof(SliderValueSmoothChanger));
         StartCoroutine(SliderValueSmoothChanger(_changingSpeed));

@@ -27,5 +27,5 @@ public abstract class HealthBar : MonoBehaviour
         transform.LookAt(transform.position + _mainCamera.transform.forward);
     }
 
-    protected abstract void OnHealthChanged(int currentValue);
+    protected abstract void OnHealthChanged(float currentValue);
 }

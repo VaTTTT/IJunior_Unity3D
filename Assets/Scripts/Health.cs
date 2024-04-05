@@ -3,22 +3,22 @@ using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private int _maximalValue;
+    [SerializeField] private float _maximalValue;
     
-    private int _currentValue;
+    private float _currentValue;
 
-    public event UnityAction<int> Changed;
+    public event UnityAction<float> Changed;
     public event UnityAction Died;
 
-    public int MaximalValue => _maximalValue;
-    public int CurrentValue => _currentValue;
+    public float MaximalValue => _maximalValue;
+    public float CurrentValue => _currentValue;
 
     private void Start()
     {
         _currentValue = _maximalValue;
     }
 
-    public void ApplyDamage(int damage)
+    public void ApplyDamage(float damage)
     {
         if (damage > 0)
         {
@@ -31,7 +31,7 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void ApplyHealing(int amount)
+    public void ApplyHealing(float amount)
     {
         if (amount > 0)
         {
@@ -39,7 +39,7 @@ public class Health : MonoBehaviour
         }
     }
 
-    private void ChangeHealthValue(int value)
+    private void ChangeHealthValue(float value)
     {
         _currentValue = Mathf.Clamp(_currentValue + value, 0, _maximalValue);
 

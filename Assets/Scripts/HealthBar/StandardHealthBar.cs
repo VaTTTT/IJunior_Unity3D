@@ -7,11 +7,11 @@ public class StandardHealthBar : HealthBar
 {
     [SerializeField] private Slider _healthSlider;
 
-    protected override void OnHealthChanged(int currentValue)
+    protected override void OnHealthChanged(float currentValue)
     {
         if (_healthSlider != null)
         {
-            _healthSlider.value = currentValue.ConvertTo<float>() / Health.MaximalValue;
+            _healthSlider.value = currentValue / Health.MaximalValue;
         }
     }
 }

@@ -10,7 +10,7 @@ public class TextHealthBar : HealthBar
         _textField.text = Health.MaximalValue + " / " + Health.MaximalValue;
     }
 
-    protected override void OnHealthChanged(int currentValue)
+    protected override void OnHealthChanged(float currentValue)
     {
         if (_textField != null)
         {

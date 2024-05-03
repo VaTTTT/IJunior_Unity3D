@@ -11,7 +11,7 @@ public abstract class HealthBar : MonoBehaviour
     {
         _health.Changed += OnHealthChanged;
 
-        if (!_mainCamera)
+        if (_mainCamera == null)
         {
             _mainCamera = Camera.main;
         }

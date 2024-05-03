@@ -5,7 +5,7 @@ public class PatrolState : State
     [SerializeField] private float _speed;
     [SerializeField] private float _stopDistance;
     
-    private PatrolPoint[] _patrolPoints;
+    private WayPoint[] _patrolPoints;
     private int _currentPatrolPointIndex;
     private int _patrolPointsNumber;
     private Animator _animator;
@@ -52,7 +52,7 @@ public class PatrolState : State
         }
     }
 
-    public void SetPatrolPoints(PatrolPoint[] points)
+    public void SetPatrolPoints(WayPoint[] points)
     {
         _patrolPoints = points;
         _patrolPointsNumber = _patrolPoints.Length;

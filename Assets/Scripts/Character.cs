@@ -10,6 +10,7 @@ public abstract class Character : Target
     [SerializeField] private float _itemDetectDistance;
 
     private Target _target;
+    private Target _mainTarget;
 
     public int EnemyLayerMask { get; protected set; }
     public int MedicineLayerMask { get; protected set; }
@@ -18,6 +19,7 @@ public abstract class Character : Target
     public float StopDistance => _itemPickupDistance;
     public float EnemyDetectDistance => _enemyDetectDistance;
     public float ItemDetectDistance => _itemDetectDistance;
+    public Target MainTarget => _mainTarget;
     
     public Target Target => _target;
 
@@ -25,5 +27,10 @@ public abstract class Character : Target
     public void SetTarget(Target target)
     { 
         _target = target;
+    }
+
+    public void SetMainTarget(Target target)
+    { 
+        _mainTarget = target;
     }
 }

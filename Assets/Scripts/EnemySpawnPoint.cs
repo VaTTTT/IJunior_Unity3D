@@ -3,8 +3,8 @@ using UnityEngine;
 public class EnemySpawnPoint : MonoBehaviour
 {
     [SerializeField] private Enemy _enemy;
-    [SerializeField] private PatrolPoint[] _patrolPoints;
+    [SerializeField] private WayPoint[] _patrolPoints;
 
     public Enemy Enemy => _enemy;
-    public PatrolPoint[] PatrolPoints => _patrolPoints;
+    public WayPoint[] PatrolPoints => _patrolPoints;
 }

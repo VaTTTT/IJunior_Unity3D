@@ -14,7 +14,7 @@ public class TargetReachedTransition : Transition
     {
         if (_character.Target)
         {
-            if (_character.Target.TryGetComponent<Enemy>(out _) || _character.Target.TryGetComponent<Player>(out _))
+            if (_character.Target.TryGetComponent<Enemy>(out _) || _character.Target.TryGetComponent<Survivor>(out _))
             {
                 _isAttackable = true;
             }

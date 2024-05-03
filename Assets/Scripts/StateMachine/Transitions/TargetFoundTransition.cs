@@ -17,7 +17,7 @@ public class TargetFoundTransition : Transition
     {
         _closestTarget = GetClosestTarget(_character.EnemyLayerMask, _character.EnemyDetectDistance);
 
-        if (_closestTarget)
+        if (_closestTarget != null)
         {
             _isTargetFound = true;
         }
@@ -25,12 +25,17 @@ public class TargetFoundTransition : Transition
         {
             _closestTarget = GetClosestTarget(_character.MedicineLayerMask, _character.ItemDetectDistance);
 
-            if (_closestTarget)
+            if (_closestTarget != null)
             {
                 _isTargetFound = true;
             }
         }
-        else 
+        else if (_character.MainTarget != null)
+        { 
+            _closestTarget = _character.MainTarget;
+            _isTargetFound = true;
+        }
+        else
         {
             _isTargetFound = false;
         }

@@ -2859,7 +2859,7 @@ MonoBehaviour:
   _resourcePrefab: {fileID: -925467453411759325, guid: a17a8ce88e6cde44795a9bf18efde1b7, type: 3}
   _quantity: 100
   _radius: 20
-  _delay: 2
+  _delay: 3
   _container: {fileID: 815068187}
 --- !u!1001 &828215599
 PrefabInstance:
@@ -3326,7 +3326,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 87.9
+  field of view: 80
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -3352,13 +3352,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.55200905, y: 0.003003961, z: -0.0012651449, w: 0.8338318}
-  m_LocalPosition: {x: -8.3, y: 28.1, z: -15.7}
+  m_LocalRotation: {x: 0.4365577, y: -0, z: -0, w: 0.8996763}
+  m_LocalPosition: {x: -9.14, y: 20.59, z: -23.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 67.01, y: 0.53, z: 0.177}
+  m_LocalEulerAnglesHint: {x: 51.769, y: 0, z: 0}
 --- !u!1001 &973121804
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3872,7 +3872,7 @@ MonoBehaviour:
   _cargoDropPoint: {fileID: 1758252222}
   _survivorsContainer: {fileID: 1368455806}
   _survivorPrefab: {fileID: 6888231049090621702, guid: 2844895f20e1fee46ae1195c03dd445e, type: 3}
-  _survivorsInitialNumber: 15
+  _survivorsInitialNumber: 3
 --- !u!4 &1124156025
 Transform:
   m_ObjectHideFlags: 0

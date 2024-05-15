@@ -30245,9 +30245,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _resourcePrefab: {fileID: -925467453411759325, guid: a17a8ce88e6cde44795a9bf18efde1b7, type: 3}
-  _quantity: 200
-  _radius: 30
-  _delay: 2
+  _quantity: 500
+  _radius: 50
+  _delay: 1
   _container: {fileID: 815068187}
 --- !u!1001 &816148080
 PrefabInstance:
@@ -31544,37 +31544,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 853180255772582169, guid: 7f1e45651b6a55b43b61d78867c0a775, type: 3}
   m_PrefabInstance: {fileID: 1317137818}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &857652310
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 857652311}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &857652311
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 857652310}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.779584, y: -134.56139, z: -96.07798}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &859978434
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45412,8 +45381,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1276043288681660090, guid: ee6c0827cb3801a458393bb0ae6d9d32, type: 3}
+      propertyPath: _newBaseFlag
+      value: 
+      objectReference: {fileID: 8138853126508930248, guid: 33f6aaaa735d25b448acb93fe2b9e2f6, type: 3}
+    - target: {fileID: 1276043288681660090, guid: ee6c0827cb3801a458393bb0ae6d9d32, type: 3}
+      propertyPath: _newBaseFlagPrefab
+      value: 
+      objectReference: {fileID: 8138853126508930248, guid: 33f6aaaa735d25b448acb93fe2b9e2f6, type: 3}
+    - target: {fileID: 1276043288681660090, guid: ee6c0827cb3801a458393bb0ae6d9d32, type: 3}
+      propertyPath: _resourcesScanDistance
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1276043288681660090, guid: ee6c0827cb3801a458393bb0ae6d9d32, type: 3}
       propertyPath: _survivorsInitialNumber
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5364462083403597117, guid: ee6c0827cb3801a458393bb0ae6d9d32, type: 3}
       propertyPath: m_Name
@@ -79285,4 +79266,3 @@ SceneRoots:
   - {fileID: 659988374}
   - {fileID: 235136625}
   - {fileID: 1261261776}
-  - {fileID: 857652311}

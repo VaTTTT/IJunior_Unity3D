@@ -23,6 +23,25 @@ public abstract class Character : Target
     
     public Target Target => _target;
 
+    public override void Select()
+    {
+        _isSelected = true;
+
+        if (_frame != null)
+        {
+            _frame.SetActive(true);
+        }
+    }
+
+    public override void Deselect()
+    {
+        _isSelected = false;
+
+        if (_frame != null)
+        {
+            _frame.SetActive(false);
+        }
+    }
 
     public void SetTarget(Target target)
     { 

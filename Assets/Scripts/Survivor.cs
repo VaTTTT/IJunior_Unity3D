@@ -3,11 +3,11 @@ using UnityEngine;
 public class Survivor : Character
 {
     [SerializeField] private CargoContainer _cargoContainer;
+    [SerializeField] private int _cost;
 
-    [SerializeField] private bool _isBusy;
     private SurvivorsBase _homeBase;
 
-    public bool IsBusy => _isBusy;
+    public int Cost => _cost;
 
     private void Awake()
     {
@@ -21,18 +21,11 @@ public class Survivor : Character
         _cargoContainer.Unloaded += Release;
     }
 
-    private void OnDisable() 
+    private void OnDisable()
     {
         _cargoContainer.Loaded -= DeliverCargo;
         _cargoContainer.Unloaded -= Release;
     }
-
-    /*
-    public void TakeResource(Resource resource)
-    {
-        SetMainTarget(resource);
-    }
-    */
 
     public void DeliverCargo()
     {
@@ -40,17 +33,12 @@ public class Survivor : Character
     }
 
     public void SetHomeBase(SurvivorsBase survivorsBase)
-    { 
+    {
         _homeBase = survivorsBase;
-    }
-
-    public void Occupy()
-    { 
-        _isBusy = true;
     }
 
     public void Release()
     {
-        _isBusy = false;
+        _isFree = true;
     }
 }

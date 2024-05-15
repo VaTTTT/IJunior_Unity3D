@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class Resource : Target
 {
-    private bool _isFree = true;
+    public override void Select()
+    {
+        _isSelected = false;
 
-    public bool IsFree => _isFree;
+        if (_frame != null)
+        {
+            _frame.SetActive(false);
+        }
+    }
 
-    public void Occupy()
-    { 
-        _isFree = false;
-        gameObject.layer = 0;
+    public override void Deselect()
+    {
+        _isSelected = false;
+
+        if (_frame != null)
+        {
+            _frame.SetActive(false);
+        }
     }
 }
